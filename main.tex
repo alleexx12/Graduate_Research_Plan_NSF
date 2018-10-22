@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, bm}
+\usepackage{tabu}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{tgcursor}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{listings}
+\usepackage{stackengine}
+\def\arraystretch{1.1}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mathptmx}
+\usepackage{setspace}
+\usepackage[hyphens]{url}
+
+\usepackage{natbib,verbatim,mathrsfs}
+\usepackage{placeins}
+\bibliographystyle{apalike}
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+    \@title
+
+    \@author
+    
+    \@date
+\end{flushleft}\egroup
+}
+\makeatother
+
+\title{Graduate Research Plan Statement}
+\author{Joshua North}
+
+\doublespacing
+
+\begin{document}
+
+%\maketitle
+
+%\linespread{1}
+
+\begin{center}
+    \textbf{Multi-type Response Modeling for Spatio-Temporal Data with Applications to Tuna Populations}
+\end{center}
+
+\noindent \textit{Key Words:} Multi-type, Spatio-Temporal Statistics, Dynamic System Modeling
+
+\vspace{2mm}
+
+
+\noindent \textbf{Introduction}: An ongoing challenge in the field of spatio-temporal statistics is the ability to jointly model multi-type response data to capture dependencies between variables in space and time. Multi-type response data refers to response variables of different types, such as a presence/absence (binary data), abundance or relative abundance (count data), or continuous data. An example in a marine system might be the relative abundance (RA) of a fish population (counts) and amount of phytoplankton (continuous, greater than or equal to zero) in the same spatial region. It is known that zooplankton feed on phytoplankton, and fish either feed directly on zooplankton or smaller fish who themselves feed on zooplankton or phytoplankton, a dependent system. RA is used to quantify the size of a fish population, measured on a catch-by-catch basis depending on the effort involved. Phytoplanton can be measured by proxy through the color of the ocean by satellites giving an indicator as to the amount of phytoplankton in a given area. Response variables measured on different spatial and temporal resolutions present additional modeling challenges. In the marine example, RA is observed at specific points in time and space whereas phytoplankton observations are for a specified area (e.g., 1km $\times$ 1km grid) and are often observed several days apart, depending on a satellite’s orbit. The dependence between the fish and phytoplankton evolves as a function of space and time, resulting in a dynamic spatio-temporal system. New statistical models are required to address the challenges of multi-type, spatio-temporal dynamics, and differences in spatial and temporal resolutions of the data.
+
+
+With the rise in advanced modeling techniques, a possible approach could be based on an artificial neural network variant. However, this is unlikely to work well for a system akin to the marine system above. In particular, while these types of modeling techniques are very adept at prediction, they rarely account for the uncertainty of the data and models, and do not provide a way to do scientific inference. Due to the complex (e.g. non-linear) relationships between the response variables and environmental drivers, model validation and uncertainty quantification are essential, yet challenging. Spatially dependent multi-type response data can be modeled using latent Gaussian processes \citep{schliep}, but as of yet, not in conjunction with dynamic spatio-temporal components that incoporate known scientific constraints.
+
+
+\vspace{2mm}
+
+\noindent \textbf{Overview and Objectives}: I propose to develop a framework for spatio-temporal statistical modeling of multi-type response data, allowing for increased predictive capability without sacrificing uncertainty quantification. The motivation for the novel framework centers on fish population models for sustainable fishing practices; specifically, looking at the tuna population in the Pacific and Indian Oceans. While the motivation for the novel framework centers on fish population models for sustainable fishing practices, these proposed methods are not limited in scope and can easily applied to a variety of spatio-temporal processes. The primary source of tuna location over time will come from publicly available data provided by the Inter-American Tropical Tuna Commission \footnote{\url{https://www.iattc.org/HomeENG.htm}} and Indian Ocean tuna Commission \footnote{\url{http://www.iotc.org/}}, with ocean pigment data from NASA's GES DISC database \footnote{\url{https://daac.gsfc.nasa.gov/datasets/NOBM_DAY_VR2017/summary}}. I will use the tuna population data in conjunction with data made publicly available by North American Regional Climate Change Assessment Program \footnote{\url{http://www.narccap.ucar.edu/index.html}} for climate data and International Argo Program \footnote{\url{http://www.argodatamgt.org/Access-to-data/Argo-data-selection}} for water quality and temperature data.
+
+
+\vspace{2mm}
+
+\noindent \textbf{Intellectual Merit}: 
+The proposed model development will be a unification and extension of methods previously investigated by my two advisers. My work will take the framework proposed by Dr. Wikle for modeling dynamic spatio-temporal systems with uncertainty quantification \citep{wikle_2017, cressie_wikle_2011}, while accounting for multi-type responses utilizing the latent spatial process from Dr. Schliep's previous work \citep{schliep}. The model will ultimately be hierarchical (i.e., a ``deep'' statistical model), with some processes specified marginally and other conditionally. Model inference will by obtained within a Bayesian framework using customized sampling algorithms.
+
+The construction of the proposed methodology will bridge the gap between differing fields of statistical research; multi-type response data and spatio-temporal processes. Once completed, the proposed methodology will provide a foundation for research into a new area of statistics. This work will also aid in the understanding of incorporating uncertainty quantification into complex dynamical models.
+
+
+
+\vspace{2mm}
+
+\noindent \textbf{Broader Impacts}: While the application discussed above focuses on a marine system, the proposed modeling methodology will be general and allow for modeling a variety of complex spatio-temporal processes of dependent multi-type data. Ecologists, environmental scientists, and disease scientists will be able employ the aforementioned framework to construct more accurate models that have the ability to predict multi-type responses with an estimate of model and prediction uncertainty. For example, the Center for Disease Control and Prevention could implement this framework to more accurately investigate the impact, spread of disease as it is effected by external factors such as air quality, access to immunizations, and weather patterns. To provide access to researchers in other disciplines, I will construct an R package that will provide researchers with easy, free, access to this modeling technique.
+%The most immediate ecological impact of my work will result in the ability to forecast tuna population trends to protect tuna from over-fishing practices.
+
+
+\vspace{2mm}
+
+\noindent \textbf{Summary}: Under the advisement of Dr. Schliep and Dr. Wikle, I will combine multi-type response modeling with dynamic spatio-temporal modeling, resulting in a novel statistical methodology. The proposed modeling approach will lead to greater statistical capabilities across multiple fields of research, including but not limited to ecology, health sciences, and climatology. I plan on pursuing this topic for my dissertation work, and if applicable, beyond. Immediate consequences of this work will be a software package in R, along with publications in appropriate statistical and subject matter journals.
+
+
+{\footnotesize \bibliography{bibliography}}
+
+\end{document}
